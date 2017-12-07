@@ -46,16 +46,29 @@ p{
   color: white;
 }
 
-section{
+section.RequestCreation{
 	background: #fff;
 	background: rgba(255, 255, 255, 0.9);
-	margin: 0% 2% 40px;
+	margin: 1% 0% 0px;
 	border: 1px solid #ccc;
 	position: relative;
 	border-top-left-radius: 2px;
 	border-top-right-radius: 2px;
-	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2),
-				0 25px 50px 0 rgba(0, 0, 0, 0.15);
-  width:96%;
+  width:100%;
 	min-width: 500px;
+}
+
+label{
+  font-weight: bold;
+  text-align: left;
+  float: left;
+}
+
+
+
+.MYControlLabel {
+  text-align: left;
+  font-weight: bold;
+  text-align: left;
+  float: left;
 }

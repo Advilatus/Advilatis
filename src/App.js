@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import './style.css';
 // Load Top and side bar
@@ -7,21 +6,30 @@ import HeaderApp from './HeaderApp';
 import SideBar from './SideBar';
 import ReactDOM from 'react-dom';
 import { render } from 'react-dom';
+
 import {  Popover, Tooltip, OverlayTrigger, Modal, Button  } from 'react-bootstrap';
+
+import {
+  Route,
+  NavLink,
+  HashRouter
+} from "react-router-dom";
+import MyAppFooter from "./Footer/MyAppFooter";
+
+
 var createReactClass = require('create-react-class');
-// import { Modal } from 'react-bootstrap';
 
 class RequestButton extends Component {
    constructor(props) {
     super(props);
     this.state = {isToggleOn: false};
-
     // This binding is necessary to make `this` work in the callback
-	this.handleClick = this.handleClick.bind(this);
-	this.doParentToggle= this.doParentToggle.bind(this);
+	  this.handleClick = this.handleClick.bind(this);
+	  this.doParentToggle= this.doParentToggle.bind(this);
   }
+
   handleClick() {
-	console.log("ClickRequest");
+	  console.log("ClickRequest");
     this.setState(prevState => ({
       isToggleOn: !prevState.isToggleOn
     }));
@@ -29,10 +37,11 @@ class RequestButton extends Component {
 
   doParentToggle(){
     console.log("hello");
-	this.setState(prevState => ({
-      isToggleOn: !prevState.isToggleOn
+	  this.setState(prevState => ({
+    isToggleOn: !prevState.isToggleOn
     }));
    }
+
   render() {
     return (
 		<section id="MainApp"className="AlistTable">
@@ -42,7 +51,7 @@ class RequestButton extends Component {
 			<button>
 				{this.state.isToggleOn ? 'ON' : 'OFF'}
 			</button>
-			{this.state.isToggleOn ? <MyModalViewForRequestCreation ValueToTest='fdsfdsfdsf' parentToggle={this.doParentToggle}/> : null }
+			  {this.state.isToggleOn ? <MyModalViewForRequestCreation ValueToTest='fdsfdsfdsf' parentToggle={this.doParentToggle}/> : null }
 		</section>
     );
   }
@@ -52,30 +61,29 @@ class MyModalViewForRequestCreation extends Component {
   //BIND OBJ ET FONCTION
   constructor(props) {
     super(props);
-	console.log("BuildModal");
+	  console.log("BuildModal");
     this.state = {showModal: true, isvisible: true};
 
-	// this.ValueToTest ='Yahooo'
-	this.close = this.close.bind(this);
-	this.open = this.open.bind(this);
-	this.props.parentToggle.bind(this);
+    // this.ValueToTest ='Yahooo'
+    this.close = this.close.bind(this);
+    this.open = this.open.bind(this);
+    this.props.parentToggle.bind(this);
   }
   // getInitialState() {
     // return { showModal: false };
   // }
 
   close() {
-	console.log("CloseModal");
+	  console.log("CloseModal");
     this.setState({ showModal: false });
-	// this.props.parentToggle.bind(this);
-	// {this.props.parentToggle.bind(this)};
-	this.props.parentToggle();
+  	// this.props.parentToggle.bind(this);
+  	// {this.props.parentToggle.bind(this)};
+	  this.props.parentToggle();
   }
 
   open() {
     this.setState({ showModal: true });
-	this.setState({ isvisible: true });
-
+	  this.setState({ isvisible: true });
   }
 
   render() {
@@ -203,10 +211,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-		<HeaderApp/>
-		<SideBar/>
-		<RequestButton/>
-		<Example/>
+		    <HeaderApp/>
+		    {/* <SideBar/> */}
+		    <RequestButton/>
+        {/* <Example/> */}
+        <MyAppFooter/>
       </div>
     );
   }
