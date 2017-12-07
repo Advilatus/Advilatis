@@ -70,12 +70,16 @@ class NewRequestForm extends Component {
     }));
   }
 
+  handleSubmitClick() {
+    alert(`Submit Form activated!`);
+  }
+
   doParentToggle(){
     console.log("hello");
 	  this.setState(prevState => ({
     isToggleOn: !prevState.isToggleOn
     }));
-   }
+  }
 
   render() {
     function FieldGroup({ id, label, help, ...props }) {
@@ -98,6 +102,9 @@ class NewRequestForm extends Component {
                         {this.CreateFormDivision('Titre de la demande')}
                         {this.FieldGroup("formControlsText","Titre de la demande","") }
                         <FieldGroup id="formControlsText" type="text" label="Autre Champs"placeholder="Enter text"/>
+                        <Button  bsStyle="success RequestBut" type="submit" onClick={this.handleSubmitClick}>
+                          Envoyé
+                        </Button>
                     </div>
                 </div>
 

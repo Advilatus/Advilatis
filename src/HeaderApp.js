@@ -32,7 +32,7 @@ class HeaderApp extends Component {
     return (
 	  <section>
 		  <header>
-				<h1>Notairius - Le notaire sympa</h1>
+				<h1>Advilatus</h1>
 		  </header>
 			<HashRouter>
 				<div>
