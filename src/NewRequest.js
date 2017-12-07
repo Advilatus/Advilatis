@@ -37,10 +37,11 @@ class SimpleInput extends Component {
 class NewRequestForm extends Component {
    constructor(props) {
     super(props);
-    this.state = {isToggleOn: false};
+    this.state = {isToggleOn: false, myValue: ''};
     // This binding is necessary to make `this` work in the callback
 	  this.handleClick = this.handleClick.bind(this);
-      this.doParentToggle= this.doParentToggle.bind(this);
+    this.doParentToggle= this.doParentToggle.bind(this);
+    this.updateInputValue = this.updateInputValue.bind(this);
   }
 
 
@@ -61,17 +62,24 @@ class NewRequestForm extends Component {
         {help && <HelpBlock>{help}</HelpBlock>}
       </FormGroup>
     );
-    }
-
-  handleClick() {
-	  console.log("ClickRequest");
-    this.setState(prevState => ({
-      isToggleOn: !prevState.isToggleOn
-    }));
   }
 
+  handleClick(){
+    console.log("trying to add picture url");
+    console.log("value of input field : "+ this.state.inputfield);
+    alert(`Submit Form activated! `+ this.state.inputfield);
+
+  }
+
+  updateInputValue(evt){
+    //console.log("input field updated with "+evt.target.value);
+    this.state={inputfield: evt.target.value};   
+
+  }
+   
+
   handleSubmitClick() {
-    alert(`Submit Form activated!`);
+    alert(`Submit Form activated! `);
   }
 
   doParentToggle(){
@@ -80,6 +88,7 @@ class NewRequestForm extends Component {
     isToggleOn: !prevState.isToggleOn
     }));
   }
+
 
   render() {
     function FieldGroup({ id, label, help, ...props }) {
@@ -101,8 +110,9 @@ class NewRequestForm extends Component {
                         {this.CreateFormDivision('Demandeur')}
                         {this.CreateFormDivision('Titre de la demande')}
                         {this.FieldGroup("formControlsText","Titre de la demande","") }
-                        <FieldGroup id="formControlsText" type="text" label="Autre Champs"placeholder="Enter text"/>
-                        <Button  bsStyle="success RequestBut" type="submit" onClick={this.handleSubmitClick}>
+                        <FieldGroup id="formControlsText" type="text" label="Autre Champs"placeholder="Enter text"  onChange={this.updateInputValue}/>
+                        <FieldGroup id="formControlsText" type="text" label="Autre Champs"placeholder="Enter text"  onChange={this.updateInputValue}/>
+                        <Button  bsStyle="success RequestBut" type="submit" onClick={this.handleClick}>
                           Envoyé
                         </Button>
                     </div>
